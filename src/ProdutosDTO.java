@@ -8,7 +8,7 @@
  * @author Adm
  */
 public class ProdutosDTO {
-    private Integer id;
+    private int id;
     private String nome;
     private Integer valor;
     private String status;
@@ -16,6 +16,7 @@ public class ProdutosDTO {
     public Integer getId() {
         return id;
     }
+    
 
     public String getNome() {
         return nome;
