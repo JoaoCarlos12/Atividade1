@@ -48,8 +48,6 @@ public class ProdutosDAO {
     }
     
     public ArrayList<ProdutosDTO> listarProdutos(){
-        
-       
        try{
            conn = new conectaDAO().connectDB();
            String sql = "SELECT * FROM produtos";
@@ -72,10 +70,33 @@ public class ProdutosDAO {
             }catch(Exception e){
                 return null;
             }
-
-  
     }
     
+    
+    public void venderProdutos(int id){
+        String valor = "Vendido";
+        try{
+           ProdutosDTO produtos = new ProdutosDTO();
+            conn = new conectaDAO().connectDB();
+            produtos.setId(id);
+            if(produtos.getStatus() == "Vendido"){
+            }else{
+          produtos.setStatus(valor);
+            }
+       
+            st = conn.prepareStatement("UPDATE produtos SET status=? WHERE id=?");
+               st.setString(1, produtos.getStatus());
+              st.setInt(2, produtos.getId());
+             st.execute();
+            
+            
+            
+            
+        }catch(SQLException e){
+            System.out.println("Erro ao conectar "  + e.getMessage());
+     
+        }
+    }
     
     
         
